@@ -1,0 +1,834 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'dm sans', 'calibri';
+    scroll-behavior: smooth;
+}
+
+:root{
+    --overall-theme-color:#66ddcc;
+    --text-color:black;
+    --system-color:white;
+}
+
+body{
+    background-color: var(--system-color);
+    color:var(--text-color);
+}
+
+nav.nav{
+    width: calc(100vw - 4rem);
+    display: flex;
+    margin: 1rem 2rem;
+    justify-content: space-between;
+    border-radius: 4px;
+    background-color: var(--system-color);
+    height: fit-content;
+    z-index: 2;
+    transition: .425s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    position: fixed;
+}
+
+nav.nav, nav.top, div.banner{
+    box-shadow: 0.13rem .13rem .79rem rgba(0, 0, 0, 0.116);
+}
+
+nav.top{
+    display: none;
+}
+
+nav.nav ul{
+    padding:0 1.4rem;
+}
+
+nav.nav ul li p{
+    font-size:1.03rem;
+}
+
+nav.nav ul.left li p{
+    font-weight: 600;
+    text-align: center;
+}
+
+nav.nav ul li{
+    display: inline-grid;
+    padding: 1rem;
+    flex-direction: column;
+}
+
+nav.nav ul li:hover > span{
+    display: block;
+}
+
+nav.nav ul li span{
+    display: none;
+    height: 0.4rem;
+    width: 0.4rem;
+    background-color: var(--overall-theme-color);
+    justify-self:center;
+    border-radius:50%;
+    padding: 0;
+    margin:1.45rem 0;
+    position: absolute;
+    animation:navspan .17s linear;
+}
+
+nav.nav ul li a{
+    text-decoration: none;
+    color:white;
+}
+
+nav.nav ul li a section{
+    display: none;
+}
+
+div.banner{
+    width: calc(100vw - 4rem);
+    margin:4rem 2rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 80vh;
+    border-radius: 4px;
+}
+
+div.banner div.action-section h2{
+    color:var(--overall-theme-color);
+    font-size: 2.2rem;
+    margin-bottom: 1.1rem;
+}
+
+div.banner div.action-section p{
+    font-size: 1.1rem;
+    margin:1.3rem 0;
+}
+
+div.banner div.action-section section.actions{
+    display: flex;
+}
+
+div.banner div.action-section, div.banner div.image-section{
+    display: grid;
+    align-content: center;
+    color:var(--text-color);
+    padding: 0 2.4rem;
+}
+
+div.banner div.image-section img{
+    max-width: 40vw;
+}
+
+div.error-message{
+    position:fixed;
+    width:100vw;
+    top:3.5rem;
+    display: flex;
+    justify-content: center;
+    display: none;
+    animation: transcend 0.18s cubic-bezier(0.155, 0.05, 0.855, 0.6);
+    z-index: 2;
+    background-color: var(--system-color);
+}
+
+div.error-message p{
+    text-align: center;
+    font-size:1.08rem;
+    padding:0.8rem 1.18rem;
+    border-radius: 5px;
+    box-shadow: 0.2rem 0.2rem 0.37rem rgba(0, 0, 0, 0.384);
+    border-bottom: 2px solid orangered;
+    color:orangered;
+}
+
+div.first-page{
+    display: block;
+}
+
+div.second-page{
+    display: none;
+}
+
+form.signup{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height:100vh;
+}
+
+form.signup h2{
+    text-align: center;
+    margin-bottom:3rem;
+}
+
+form.signup section{
+    display: flex;
+}
+
+form.signup section li, ul.other-options li{
+    list-style-type: none;
+}
+
+form.signup section li label{
+    position: absolute;
+    font-size:1.03rem;
+    padding:0.3rem 0.5rem;
+    font-weight: 400;
+    margin-left:-23rem;
+    margin-top:2rem;
+    transition: 0.31s cubic-bezier(0.25, 0.46, 0.45, 1) all;
+}
+
+form.signup section li input{
+   margin:2rem;
+    width:20rem;
+    font-size: 1.17rem;
+    padding:0.3rem 0.5rem;
+    outline:none;
+    border:none;
+    font-weight: 500;
+    border-bottom:2px solid rgba(0, 0, 0, 0.582);
+    transition: 0.57s cubic-bezier(0.68, -0.55, 0.265, 1.55) border;
+    background-color: var(--system-color);
+    color:var(--text-color);
+}
+
+form.signup section li input:hover, form.signup section li input:focus{
+    border-bottom:2px solid rgba(0, 0, 0, 0.911)
+}
+
+form.signup section li input:focus + label, form.signup section li input.not-empty + label{
+    transform: translateY(-2rem);
+}
+
+form.signup section a[role = "button"], 
+button[type="submit"], 
+div.banner div.action-section section.actions button{
+    background-color: var(--overall-theme-color);
+    text-decoration: none;
+    color:var(--system-color);
+    padding:0.68rem 1.37rem;
+    margin:3rem 2rem;
+    font-size:1.08rem;
+    font-weight: 700;
+    border-radius:3px;
+    border:2px solid var(--overall-theme-color);
+    text-transform: capitalize;
+}
+
+div.banner div.action-section section.actions button{
+    margin:2rem 0;
+    margin-right:1rem;
+}
+
+form.signup section a[role = "button"].second-page-previous,
+div.banner div.action-section section.actions a:last-of-type button{
+    background-color: var(--system-color);
+    color: var(--overall-theme-color);
+}
+
+form.signup section input[type="checkbox"]{
+    display: none;
+}
+
+form.signup section input[type = "checkbox"] + label{
+    display: flex;
+    margin:2rem;
+}
+
+form.signup section input[type = "checkbox"] + label ul li.checked, 
+form.signup section input[type = "checkbox"]:checked + label ul li.blank{
+    display: none;
+}
+
+form.signup section input[type = "checkbox"] + label ul li.checked,
+form.signup section input[type = "checkbox"] + label ul li.blank{
+    transform: scale(0.9);
+}
+
+form.signup section input[type = "checkbox"]:checked + label ul li.checked{
+    display: block;
+}
+
+form.signup section label ul li.checked{
+    animation:pop 0.45s;
+}
+
+form.signup section input[type = "checkbox"] + label p{
+    font-size:1.13rem;
+    margin-left:0.3rem;
+}
+
+ul.other-options li a, form.signup p.forgot-password a{
+    text-decoration: none;
+    margin: 2rem;
+    color:var(--text-color);
+    transition: 0.43s linear all;
+    text-align: center;
+}
+
+ul.other-options li a:hover, form.signup p.forgot-password a:hover{
+    text-decoration: underline;
+}
+
+form.signup p.forgot-password a{
+    color:orangered;
+}
+
+div.services{
+    width: calc(100vw - 4rem);
+    margin:5rem 2rem;
+    min-height:70vh;
+    display: grid;
+    align-content: center;
+    overflow-x: hidden;
+}
+
+div.services h2, div.services p.add-intel{
+    text-align:center;
+}
+
+div.services h2{
+    font-size:2rem;
+    margin:.5rem 0;
+    color: var(--overall-theme-color);
+    font-weight: 600;
+}
+
+div.services p.add-intel{
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+div.services ul.items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.services ul.items li{
+    list-style-type: none;
+    margin:1rem;
+    border-radius: 5px;
+    box-shadow: 0.08rem .08rem .59rem rgba(0, 0, 0, 0.106);
+    width:10rem;
+    padding:1rem 1.14rem;
+}
+
+div.services ul.items li section.icon{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    transform: scale(2.2);
+    margin:2rem 0;
+    color:var(--overall-theme-color);
+}
+
+div.services ul.items li p{
+    font-size:1.09rem;
+    text-align: center;
+}
+
+div.our-work{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    width:calc(100vw - 5rem);
+    margin:5rem 2.5rem;
+    margin-top:0rem;
+    padding:5rem 0;
+    padding-top: 1rem;
+}
+
+div.our-work h2{
+    color:var(--overall-theme-color);
+    text-align: center;
+    margin-bottom:3rem;
+    font-size: 2rem;
+}
+
+div.our-work ul{
+    display: flex;
+    justify-content: space-evenly;
+    width: inherit;
+    flex-wrap: wrap;
+}
+
+div.our-work ul li{
+    list-style: none;
+    margin:.5rem 0;
+    display: grid;
+}
+
+div.our-work ul li button{
+    font-size: 4rem;
+    background-color: var(--system-color);
+    border:none;
+    outline: none;
+    font-weight: 700;
+    color:var(--overall-theme-color);
+}
+
+div.our-work ul li p.heading{
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+div.our-work ul li p.content{
+    width:20rem;
+    margin:1.4rem 0;
+}
+
+div.our-work ul li p.heading, div.our-work ul li h3, div.our-work ul li p.content{
+    text-align: center;
+}
+
+footer.footer{
+    display: grid;
+    padding-top: 3rem;
+}
+
+footer.footer ul li{
+    list-style-type: none;
+}
+
+footer.footer div.footer-main-content, footer.footer div.footer-bottom-content{
+    display: flex;
+}
+
+footer.footer div.footer-main-content{
+    justify-content:space-around
+}
+
+footer.footer div.footer-main-content  section{
+    max-width: 33vw;
+}
+
+footer.footer div.footer-main-content section.info p{
+    font-size: 1rem;
+}
+
+footer.footer div.footer-main-content section h3{
+    font-size:1.35rem;
+    margin-bottom:1rem;
+    color:var(--overall-theme-color);
+}
+
+footer.footer div.footer-main-content section ul li{
+    font-size: 1.01rem;
+    margin:1rem 0;
+    padding:.17rem 0;
+}
+
+footer.footer div.footer-main-content section ul li a{
+    text-decoration: none;
+    color:var(--text-color);
+}
+
+footer.footer div.footer-bottom-content{
+    justify-content: space-between;
+    padding:1.5rem 2rem;
+    margin-top:3rem;
+}
+
+footer.footer div.footer-bottom-content section.social-media-links ul li{
+    display: inline;
+    margin:0 .3rem;
+    padding:.2rem .3rem;
+    opacity: .7;
+    transition: .43s cubic-bezier(0.68, -0.55, 0.265, 1.55) opacity;
+}
+
+footer.footer div.footer-bottom-content section.social-media-links ul li:hover{
+    opacity: 1;
+}
+
+footer.footer div.footer-bottom-content section.social-media-links ul li a{
+    color:var(--overall-theme-color)
+}
+
+footer.footer div.footer-bottom-content section.terms-and-conditions ul li a{
+    color:var(--text-color);
+}
+
+@media (prefers-color-scheme:dark){
+    :root{
+        --text-color:white;
+        --system-color:#202020;
+    }
+
+    nav.nav, div.banner, nav.top{
+        box-shadow: 0.3rem .3rem .9rem rgba(0, 0, 0, 0.308);
+    }
+
+    div.services  ul.items li{
+        box-shadow: 0.13rem .13rem .69rem rgba(0, 0, 0, 0.208);
+    }
+
+    form.signup section li input{
+        border-color: rgba(255, 255, 255, 0.382);
+    }
+
+    form.signup section li input:hover, form.signup section li input:focus{
+        border-color: rgba(255, 255, 255, 0.911)
+    }
+}
+
+@media screen and (min-device-width:280px) and (max-device-width:480px){
+    nav.nav{
+        position: fixed;
+        bottom:0;
+        width: calc(100vw - 2.5rem);
+        margin:.5rem 1.25rem;
+    }
+
+    .scrolled-up{
+        bottom:-10rem !important;
+    }
+    
+    .scrolled-down{
+        bottom:0;
+    }
+
+    nav.top{
+        top:0;
+        width: 100vw;
+        background-color: var(--system-color);
+        display: flex;
+        justify-content: center;
+        transition: .395s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+
+    nav.top ul li{
+        list-style-type: none;
+        display: inline-block;
+        padding:1rem;
+    }
+
+    nav.top ul li a{
+        text-decoration: none;
+        color:var(--overall-theme-color)
+    }
+
+    nav.top ul li p{
+        font-size:1.4rem;
+        font-weight: 600;
+    }
+
+    nav.nav ul.left{
+        display: none;
+    }
+
+    nav.nav ul{
+        display: flex;
+        width: inherit;
+        justify-content: space-evenly;
+        padding: 0;
+    }
+
+    nav.nav ul li a{
+        display:grid;
+    }
+
+    nav.nav ul li a section.icon{
+        display: block;
+        width: fit-content;
+        justify-self: center;
+        opacity: 0.7;
+    }
+
+    nav.nav ul li.current a section.icon{
+        opacity: 1;
+    }
+
+    nav.nav ul li a p{
+        display: none;
+    }
+
+    nav.nav ul li span{
+        margin:1.8rem 0;
+    }
+
+    div.banner{
+        width: 100vw;
+        margin:1rem 0rem;
+        flex-direction: column-reverse;
+        box-shadow: none;
+        height: fit-content;
+    }
+
+    div.banner div.image-section{
+        display: grid;
+        justify-content: center;
+        padding-top:5vh;
+    }
+
+    div.banner div.image-section img{
+        transform: scale(2);
+        position:relative;
+        margin-bottom: 4rem;
+    }
+
+    div.banner div.action-section{
+        padding: 0 1rem;
+    }
+
+    div.banner div.action-section h2{
+        font-size:1.5rem;
+        margin: 0;
+    }
+
+    div.banner div.action-section section.actions{
+        justify-content: center;
+    }
+
+    div.services{
+        width:calc(100vw - 1rem);
+        margin:5rem .5rem;
+    }
+
+    div.services ul.items li{
+        width: 27vw;
+        margin:1rem .6rem;
+        padding: .7rem 1.1rem;
+        display: grid;
+        justify-content: center;
+    }
+
+    div.services ul.items li section.icon{
+        transform: scale(2.2);
+    }
+
+    form.signup{
+        display: grid;
+        justify-content: center;
+        align-content: center;
+    }
+
+    form.signup section li input{
+        background-color: rgba(0, 0, 0, 0.062);
+        border:none;
+        border-radius: 6px;
+        width: 90vw;
+        margin:2rem 0;
+        font-size: 1.6rem;
+        font-weight: 400;
+        padding:0.5rem 0.7rem;
+        transition: 0.57s cubic-bezier(0.68, -0.55, 0.265, 1.55) background;
+    }
+
+    form.signup section li label{
+        margin-left:-93vw;
+        padding: 0.5rem 0.2rem;
+        font-size: 1.4rem;
+    }
+
+    form.signup section li input:hover, form.signup section li input:focus{
+        border-bottom:none;
+        background-color:rgba(0, 0, 0, 0.13);
+    }
+
+    form.signup section li input:focus + label, form.signup section li input.not-empty + label{
+        transform: translateY(-3rem);
+    }
+    
+    form.signup section input[type = "checkbox"] + label,
+    ul.other-options li a, form.signup p.forgot-password a 
+    {
+        margin:2rem 0;
+    }
+
+    form.signup section input[type = "checkbox"] + label p{
+        font-size:1.4rem;
+    }
+
+    ul.other-options li a, form.signup p.forgot-password a{
+        font-size: 1.2rem;
+    }
+
+    div.our-work{
+        width:calc(100vw - 2rem);
+        margin:5rem 1rem;
+    }
+
+    div.our-work ul{
+        flex-direction: column;
+    }
+
+    div.our-work ul li{
+        display: grid;
+        justify-content: center;
+        margin:1rem 0;
+    }
+
+    div.our-work ul li p.content{
+        width: 80vw;
+    }
+
+    form.signup section a[role = "button"], button[type="submit"]{
+        margin:0 1.5rem 0 0;
+        margin-bottom: 2rem;
+        font-size: 1.23rem;
+        padding:0.8rem 1.3rem;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    form.signup section{
+        flex-direction: column;
+    }
+
+    form.signup section.buttons{
+        display: flex;
+        justify-content: space-around;
+        padding:0 1rem;
+    }
+
+    form.signup section.buttons button, form.signup section.buttons a{
+        margin:0;
+        border-radius:5px;
+        font-size:1.3rem;
+        font-weight: 600;
+        margin-bottom:1rem;
+    }
+
+    form.signup div.second-page section.buttons{
+        flex-direction: row;
+    }
+
+    footer.footer{
+        height: 50vh;
+        overflow: scroll;
+        padding:1rem;
+    }
+
+    footer.footer div.footer-main-content, footer.footer div.footer-bottom-content{
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer.footer div.footer-main-content section{
+        max-width: fit-content;
+        padding:.3rem .7rem;
+    }
+
+    footer.footer div.footer-bottom-content{
+        padding:0;
+        flex-direction: column-reverse;
+    }
+
+    footer.footer div.footer-bottom-content section.social-media-links{
+        margin-top:2rem;
+    }
+
+    footer.footer div.footer-bottom-content section.social-media-links ul{
+        display: flex;
+        justify-content: space-between;
+        width:18rem;
+    }
+
+    footer.footer div.footer-bottom-content section.social-media-links ul li{
+        opacity: 1;
+    }
+}
+
+@media screen and (min-device-width:480px){
+    .scrolled-up{
+        top:-10rem !important;
+    }
+    
+    .scrolled-down{
+        top:0;
+    }
+}
+
+@media screen and (min-device-width:480px) and (max-device-width:1023px){
+    div.banner{
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        height: fit-content;
+    }
+
+    div.banner div.image-section{
+        align-items: center;
+        justify-content: center;
+        padding: 1.3rem 0;
+        margin:3rem 0;
+    }
+
+    div.banner div.image-section img{
+        margin:0;
+        transform: scale(1.5);
+    }
+
+    div.banner div.action-section h2,
+    div.banner div.action-section p{
+        width:calc(100vw - 6rem)
+    }
+
+    div.banner div.action-section h2{
+        font-size: 2.3rem;
+    }
+
+    div.banner div.action-section p{
+        font-size:1.18rem;
+    }
+
+    div.banner div.action-section section.actions{
+        margin-bottom:3rem;
+        justify-content: center;
+    }
+
+    form.signup section.name{
+        flex-direction: column;
+    }
+
+    form.signup section li input{
+        width:60vw;
+        padding:0.3rem .8rem;
+        font-size: 1.5rem;
+        margin-right:0;
+    }
+
+    form.signup section li label{
+        margin-left:calc(-60vw - 1.5rem);
+        font-size:1.1rem;
+    }
+}
+
+/*STYLES FOR BOTH MOBILE AND TABLET*/
+@media screen and (min-device-width:280px) and (max-device-width:1096px) {
+    
+}
+
+@media screen and (min-device-width:280px) and (max-device-width:480px) and (prefers-color-scheme:dark){
+    form.signup section li input{
+        background-color: rgba(0, 0, 0, 0.288);
+    }  
+
+    form.signup section li input:hover, form.signup section li input:focus{
+        background-color:rgba(0, 0, 0, 0.486);
+    }
+}
+
+
+@keyframes pop{
+    0%{
+        transform: scale(.6);
+    }
+    60%{
+        transform: scale(0.91);
+    }
+}
+
+@keyframes transcend{
+    0%{
+        transform: translateY(-1rem);
+    }
+}
+
+@keyframes navspan{
+    0%{
+        transform: translateY(1rem);
+    }
+}

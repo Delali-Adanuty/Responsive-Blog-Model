@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triad - Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="error-message">
+        <p></p>
+    </div>
+    <form class="signup">
+        <div class="first-page">
+            <h2>Create an Account Today!</h2>
+            <section class="name">
+                <li>
+                    <input type="text" name="firstname" required>
+                    <label for="firstname">First Name</label>
+                </li>
+                <li>
+                    <input type="text" name="surname" required>
+                    <label for="surname">Surname</label>
+                </li>
+            </section>
+            <section class="email">
+                <li>
+                    <input type="email" name="email" required>
+                    <label for="email">Email</label>
+                </li>
+            </section>
+            <section class="buttons">
+                <a href="#!" role = "button"  class="first-page-proceed">Proceed</a>
+            </section>
+        </div>
+        <div class="second-page">
+            <h2>Set your password</h2>
+            <section class="password">
+                <li>
+                    <input type="password" name="password" required>
+                    <label for="firstname">Password</label>
+                </li>
+            </section>
+            <section class="retype-password">
+                <li>
+                    <input type="password" name="confirm-password" required>
+                    <label for="email">Confirm Password</label>
+                </li>
+            </section>
+            <section class="checkbox">
+                    <input type="checkbox" name="show-password" id="show-password">
+                    <label for="show-password">
+                        <ul class="icons">
+                            <li class="blank">
+                                <i data-feather="circle"></i>
+                            </li>
+                            <li class="checked">
+                                <i data-feather="check-circle"></i>
+                            </li>
+                        </ul>
+                        <p>Show Password</p>
+                    </label>
+            </section>
+            <section class="buttons">
+                <a href="#!" role = "button"  class="second-page-previous">Back</a><br>
+                <button type="submit">Create Account</button>
+            </section>
+        </div>
+        <ul class="other-options">
+            <li>
+                <a href="login.html">Already have an account? Log In</a>
+            </li>
+        </ul>
+    </form>
+
+    <script src="js/signup.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/feather.js"></script>
+</body>
+</html>
