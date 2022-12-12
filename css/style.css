@@ -5,6 +5,8 @@
     scroll-behavior: smooth;
 }
 
+@import url('https://fonts.cdnfonts.com/css/dm-sans');                
+
 :root{
     --overall-theme-color:#66ddcc;
     --text-color:black;
